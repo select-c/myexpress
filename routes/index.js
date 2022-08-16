@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', {title: 'Express1'});
+// });
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'Express', layout:'layout' });
+  res.render('index', {title: 'work',layout:'work'});
 });
 router.get('/post', function(req, res, next) {
   res.render('post', {title: '提交' });
