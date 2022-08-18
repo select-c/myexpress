@@ -24,3 +24,5 @@
     (2)require('bootstrap') 代码的作用是加载 Bootstrap 的所有 jQuery 插件到 jQuery 对象上
 8.安装jQuery(Bootstrap依赖jQuery) 地址：https://jquery.com/
     npm install jquery
+9.安装mongodb
+    
