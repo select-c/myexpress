@@ -1,6 +1,6 @@
 //数据库
 var MongoStore=require('connect-mongo');
-var settings = require('../settings');
+var settings = require('./settings');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -12,23 +12,25 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 var expressLayouts = require('express-ejs-layouts');
+const session  = require('express-session');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('view options',{layout:true});
+//app.set('view options',{layout:true});
 
 app.use(expressLayouts);
 //app.set('layout','views/layout')
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.set(express.bodyParser());
-app.set(express.methodOveride());
+//app.set(express.bodyParser());
+//app.set(express.methodOveride());
 app.use(cookieParser());
-app.use(express.session({
+app.use(session ({
   secret:settings.cookieParser,
-  store:new MongoStore({
-    db:settings.db
+  store:MongoStore.create({
+    mongoUrl: 'mongodb://localhost/test-app',
+    ttl: 14 * 24 * 60 * 60 // = 14 days. Default
   })
 }));
 app.use(express.static(path.join(__dirname, 'public')));
