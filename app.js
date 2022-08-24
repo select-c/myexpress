@@ -27,9 +27,11 @@ app.use(express.urlencoded({ extended: false }));
 //app.set(express.methodOveride());
 app.use(cookieParser());
 app.use(session ({
-  secret:settings.cookieParser,
+  secret:"microblogbyvoid",
+  resave:false,
+  saveUninitialized:true,
   store:MongoStore.create({
-    mongoUrl: 'mongodb://localhost/test-app',
+    mongoUrl: 'mongodb://localhost/mydata',
     ttl: 14 * 24 * 60 * 60 // = 14 days. Default
   })
 }));
