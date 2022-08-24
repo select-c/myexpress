@@ -25,4 +25,10 @@
 8.安装jQuery(Bootstrap依赖jQuery) 地址：https://jquery.com/
     npm install jquery
 9.安装mongodb
+
+
+说明：
+resave：是指每次请求都重新设置session cookie，最直观的表现就是客户端的cookie的有效期在变化；
+saveUninitialized ： 是否强制将未初始化的 session 存储。当新建了一个 session 且未设定属性或值时，它就处于未初始化状态。
+
     

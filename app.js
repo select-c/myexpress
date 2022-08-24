@@ -14,8 +14,12 @@ var app = express();
 var expressLayouts = require('express-ejs-layouts');
 const session  = require('express-session');
 // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout extractScripts', true)
+app.set('layout extractStyles', true)
 //app.set('view options',{layout:true});
 
 app.use(expressLayouts);
@@ -27,9 +31,12 @@ app.use(express.urlencoded({ extended: false }));
 //app.set(express.methodOveride());
 app.use(cookieParser());
 app.use(session ({
-  secret:settings.cookieParser,
+  secret:"microblogbyvoid",
+  resave: false, //添加 resave 选项  
+  saveUninitialized: true, //添加 saveUninitialized 选项
+  cookie: { maxAge: 60 * 1000 },
   store:MongoStore.create({
-    mongoUrl: 'mongodb://localhost/test-app',
+    mongoUrl: 'mongodb://localhost/mydata',
     ttl: 14 * 24 * 60 * 60 // = 14 days. Default
   })
 }));
