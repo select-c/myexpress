@@ -6,12 +6,18 @@ var router = express.Router();
 //   res.render('index', {title: 'Express1'});
 // });
 router.get('/', function (req, res, next) {
+<<<<<<< HEAD
   res.render('index', { title: 'work', layout: 'work' });
+=======
+  //res.locals.title="Microblog";
+  res.render('index', {title:"Microblog"});
+>>>>>>> 492dc6ecea2d15b0f2aef2307d05178e11c38055
 });
 router.get('/post', function (req, res, next) {
   res.render('post', { title: '提交' });
 });
 router.get('/reg', function (req, res, next) {
+<<<<<<< HEAD
   res.render('reg', { title: '用户', layout: 'work' });
 });
 router.post('/reg', function (req, res) {
@@ -49,6 +55,10 @@ router.post('/reg', function (req, res) {
     });
   });
 });
+=======
+  res.render('reg', { title: '用户' });
+});
+>>>>>>> 492dc6ecea2d15b0f2aef2307d05178e11c38055
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Express2' });
 });
